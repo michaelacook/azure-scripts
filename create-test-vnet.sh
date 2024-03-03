@@ -27,7 +27,7 @@ az network vnet subnet create --name subnet-2 --resource-group $RGNAME --vnet-na
 az network public-ip create --resource-group $RGNAME --name public-ip-1 --sku Standard --location $AZUREREGION
 az network public-ip create --resource-group $RGNAME --name public-ip-2 --sku Standard --location $AZUREREGION
 
-az vm create \ 
+az vm create \
 --resource-group $RGNAME \
 --admin-username $VMUSER \
 --authentication-type password \
