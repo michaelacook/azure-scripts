@@ -27,5 +27,23 @@ az network vnet subnet create --name subnet-2 --resource-group $RGNAME --vnet-na
 az network public-ip create --resource-group $RGNAME --name public-ip-1 --sku Standard --location $AZUREREGION
 az network public-ip create --resource-group $RGNAME --name public-ip-2 --sku Standard --location $AZUREREGION
 
-az vm create --resource-group $RGNAME --admin-username $VMUSER --authentication-type password --admin-password $VMPASS --name WinSrv1 --image Win2019Datacenter --public-ip-address public-ip-1 --subnet subnet-1
-az vm create --resource-group $RGNAME --admin-username $VMUSER --authentication-type password --admin-password $VMPASS --name WinSrv2 --image Win2019Datacenter --public-ip-address public-ip-2 --subnet subnet-2
+az vm create \ 
+--resource-group $RGNAME \ 
+--admin-username $VMUSER \
+--authentication-type password \
+--admin-password $VMPASS \
+--name WinSrv1 --image Win2019Datacenter \
+--public-ip-address public-ip-1 \
+--vnet-name $VNETNAME \
+--subnet subnet-1
+
+az vm create \
+--resource-group $RGNAME \
+--admin-username $VMUSER \
+--authentication-type password \
+--admin-password $VMPASS \
+--name WinSrv2 \
+--image Win2019Datacenter \
+--public-ip-address public-ip-2 \
+--vnet-name $VNETNAME \
+--subnet subnet-2
