@@ -28,7 +28,7 @@ az network public-ip create --resource-group $RGNAME --name public-ip-1 --sku St
 az network public-ip create --resource-group $RGNAME --name public-ip-2 --sku Standard --location $AZUREREGION
 
 az vm create \ 
---resource-group $RGNAME \ 
+--resource-group $RGNAME \
 --admin-username $VMUSER \
 --authentication-type password \
 --admin-password $VMPASS \
