@@ -22,7 +22,7 @@ read VMPASS
 az group create --name $RGNAME --location $AZUREREGION
 
 az network vnet create --name $VNETNAME --resource-group $RGNAME --address-prefix 10.0.0.0/16 --subnet-name subnet-1 --subnet-prefixes 10.0.0.0/24
-az network vnet subnet create --name subnet-2 --resource-group $RGNAME --address-prefix 10.0.1.0/24
+az network vnet subnet create --name subnet-2 --resource-group $RGNAME --vnet-name $VNETNAME --address-prefix 10.0.1.0/24
 
 az network public-ip create --resource-group $RGNAME --name public-ip-1 --sku Standard --location $AZUREREGION
 az network public-ip create --resource-group $RGNAME --name public-ip-2 --sku Standard --location $AZUREREGION
