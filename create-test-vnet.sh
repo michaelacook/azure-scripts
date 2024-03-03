@@ -17,7 +17,7 @@ echo "VM username: "
 read VMUSER
 
 echo "VM password: "
-read VMPASS
+read -s VMPASS
 
 az group create --name $RGNAME --location $AZUREREGION
 
