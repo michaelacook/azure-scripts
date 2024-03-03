@@ -2,6 +2,7 @@
 
 # Author: Michael Cook <mcook0775@gmail.com>
 # Stand up a basic network for testing and lab purposes
+# This script builds a virtual network with two subnets, each with a Windows Server vm and public IP
 # Test script for learning purposes
 
 echo "Resource group name: "
