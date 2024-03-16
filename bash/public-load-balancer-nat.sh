@@ -156,3 +156,7 @@ az network vnet subnet update --resource-group $RG \
 --vnet-name $VNET \
 --name $SUBNET \
 --nat-gateway $NATNAME
+
+# At this point you would install IIS on the backend pool VMs and this can be scripted
+# But I prefer to do it manually by logging into the VMS
+# Tested, this script now works as intended
