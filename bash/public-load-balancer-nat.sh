@@ -97,7 +97,7 @@ az network vnet subnet create --resource-group $RG \
 
 az network bastion create --resource-group $RG \
 --name LBDemoBastionHost \
---public-ip-address $BASTIONIP
+--public-ip-address $BASTIONIP \
 --vnet-name $VNET \
 --location $LOCATION    
 
@@ -111,7 +111,7 @@ do
     --name "$VM-nic" \
     --vnet-name $VNET \
     --subnet $SUBNET \
-    --network-security-group $BackendPoolNSG
+    --network-security-group $BACKENDPOOLNSGNAME
 done
 
 # VMs
