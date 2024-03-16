@@ -26,7 +26,7 @@ NATPUBLICIPNAME='nat-public-ip'
 
 az group create --name $RG --location $LOCATION
 
-az network vnet creat --name $VNET \
+az network vnet create --name $VNET \
 --resource-gropu $RG \
 --location $LOCATION \
 --address-prefixes 10.1.0.0/16 \
