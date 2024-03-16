@@ -36,8 +36,7 @@ az network vnet create --name $VNET \
 # Public IP address for the front end of the load balancer
 az network public-ip create --resource-group $RG \
 --name $IPNAME \
---sku Standard \
---zone 1 2 3
+--sku Standard
 
 # Create the public load balancer
 az network lb create \
@@ -87,8 +86,7 @@ az network nsg rule create --resource-group $RG --nsg-name $BACKENDPOOLNSGNAME \
 # without giving them public IPs
 az network public-ip create --resource-group $RG \
 --name $BASTIONIP \
---sku Standard \
---zone 1 2 3
+--sku Standard
 
 az network vnet subnet create --resource-group $RG \
 --name $BATIONSUBNET \
@@ -120,7 +118,6 @@ az vm create --resource-group $RG \
 --nics "$BACKENDVM1-nic" \
 --image $BACKENDVMIMAGE \
 --admin-username $BACKENDVMADMIN \
---zone 1 \
 --no-wait
 
 az vm create --resource-group $RG \
@@ -128,7 +125,6 @@ az vm create --resource-group $RG \
 --nics "$BACKENDVM2-nic" \
 --image $BACKENDVMIMAGE \
 --admin-username $BACKENDVMADMIN \
---zone 2 \
 --no-wait
 
 # Add VMs to the load balancer backend pool
@@ -147,8 +143,7 @@ done
 # NAT public ip
 az network public-ip create --resource-group $RG \
 --name $NATPUBLICIPNAME \
---sku Standard \
---zone 1 2 3
+--sku Standard
 
 # NAT gateway resource
 az network nat gateway create --resource-group $RG \
