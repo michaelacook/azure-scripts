@@ -20,7 +20,7 @@ write_files:
           proxy_cache_bypass $http_upgrade;
         }
       }
-  - owner: azureuser:azureuser
+  - owner: michael:michael
     path: /home/azureuser/myapp/index.js
     defer: true
     content: |
@@ -35,7 +35,7 @@ write_files:
       })
 runcmd:
   - service nginx restart
-  - cd "/home/azureuser/myapp"
+  - cd "/home/michael/myapp"
   - npm init
   - npm install express -y
   - nodejs index.js
