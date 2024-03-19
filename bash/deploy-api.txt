@@ -7,11 +7,11 @@ packages:
   - git
 write_files:
   - owner: www-data:www-data
-  - path: /etc/nginx/sites-available/default
-  - defer: true
-  - content: |
-    server {
-    listen 80;
+    path: /etc/nginx/sites-available/default
+    defer: true
+    content: |
+      server {
+      listen 80;
       location / {
           proxy_pass http://localhost:3000;
           proxy_http_version 1.1;
