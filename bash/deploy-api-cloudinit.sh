@@ -12,7 +12,7 @@ az group create --name $RG --location $LOC
 
 az vm create --resource-group $RG \
 --name $VM \
---image Ubunbu2204 \
+--image Ubuntu2204 \
 --admin-username $VMADMIN \
 --generate-ssh-keys \
 --custom-data deploy-api.txt
