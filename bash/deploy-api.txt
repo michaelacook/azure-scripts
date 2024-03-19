@@ -1,0 +1,28 @@
+#cloud-config
+package_upgrade: true
+packages:
+  - nginx
+  - nodejs
+  - npm
+  - git
+write_files:
+  - owner: www-data:www-data
+  - path: /etc/nginx/sites-available/default
+  - defer: true
+  - content: |
+    server {
+    listen 80;
+      location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection keep-alive;
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+      }  
+    }
+runcmd:
+  - git clone git@github.com:michaelacook/subnetting-calculator-api.git
+  - cd $HOME/subnetting-calculator-api
+  - npm install -y
+  - npm start
