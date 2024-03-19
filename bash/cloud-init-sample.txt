@@ -23,7 +23,9 @@ write_files:
       }
 runcmd:
   - service nginx restart
-  - git clone https://github.com/michaelacook/subnetting-calculator-api.git
-  - cd "$HOME/subnetting-calculator-api"
+  - git config --global user.name "Michael Cook"
+  - git config --global user.email "mcook0775@outlook.com"
+  - git clone https://github.com/michaelacook/subnetting-calculator-api.git ./app
+  - cd /home/michael/app
   - npm install -y
   - npm start
