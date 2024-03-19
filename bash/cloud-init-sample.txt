@@ -21,7 +21,7 @@ write_files:
         }
       }
   - owner: michael:michael
-    path: /home/azureuser/myapp/index.js
+    path: /home/michael/myapp/index.js
     defer: true
     content: |
       const express = require('express')
