@@ -15,6 +15,6 @@ az vm create --resource-group $RG \
 --image Ubuntu2204 \
 --admin-username $VMADMIN \
 --generate-ssh-keys \
---custom-data deploy-api.txt
+--custom-data cloud-init-sample.txt
 
 az vm open-port --port 80 --resource-group $RG --name $VM

@@ -4,6 +4,7 @@ packages:
   - nginx
   - nodejs
   - npm
+  - git
 write_files:
   - owner: www-data:www-data
     path: /etc/nginx/sites-available/default
@@ -20,22 +21,8 @@ write_files:
           proxy_cache_bypass $http_upgrade;
         }
       }
-  - owner: michael:michael
-    path: /home/michael/myapp/index.js
-    defer: true
-    content: |
-      const express = require('express')
-      const app = express()
-      const os = require('os');
-      app.get('/', function (req, res) {
-        res.send('Hello World from host ' + os.hostname() + '!')
-      })
-      app.listen(3000, function () {
-        console.log('Hello world app listening on port 3000!')
-      })
 runcmd:
   - service nginx restart
   - cd "/home/michael/myapp"
-  - npm init
-  - npm install express -y
-  - nodejs index.js
+  - npm install -y
+  - npm start
