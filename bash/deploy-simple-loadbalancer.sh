@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 # This script sets up a simple Linux vm scale set behind a load balancer translating port 80 to 5000
 # The purpose is to allow the API to run without root permissions for security purposes and ease of deployment
