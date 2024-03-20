@@ -10,7 +10,6 @@ VNET='api-demo-vnet'
 SN='LBBackendPoolSubnet'
 NSG='api-demo-nsg'
 LB_IP='api-demo-lb-ip'
-LB_FE_IP='api-demo-lb-frontend-ip'
 VMSS='api-demo-scaleset'
 
 az group create --name $RG --location $LOC
@@ -50,7 +49,7 @@ az network lb rule create --name "$LB-HTTP-rule" \
     --lb-name api-demo-scalesetLB \
     --backend-pool-name "$LB-BackendPool" \
     --backend-port 5000 \
-    --frontend-ip-name $LB_FE_IP \
+    --frontend-ip-name api-demo-scalesetLBPublicIP \
     --frontend-port 80 \
     --protocol tcp
 
