@@ -33,7 +33,7 @@ az network nsg rule create --name AllowPort5000 \
     --priority 100 \
     --direction Inbound \
     --access Allow \
-    --protocl Tcp
+    --protocol Tcp
 
 az vmss create --name $VMSS \
     --resource-group $RG \
