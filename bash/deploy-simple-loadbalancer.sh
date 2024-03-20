@@ -47,7 +47,7 @@ az vmss create --name $VMSS \
 
 az network lb rule create --name "$LB-HTTP-rule" \
     --resource-group $RG \
-    --lb-name $LB \
+    --lb-name api-demo-scalesetLB \
     --backend-pool-name "$LB-BackendPool" \
     --backend-port 5000 \
     --frontend-ip-name $LB_FE_IP \
