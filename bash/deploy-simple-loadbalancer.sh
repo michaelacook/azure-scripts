@@ -47,9 +47,6 @@ az network lb create --name $LB \
     --frontend-ip-name "${LB_IP}-frontend" \
     --backend-pool-name DefaultBackendPool
 
-# wait 3 minutes because it seems the commands below are running before the lb is successfully running
-sleep 240
-
 az network lb probe create --name "${LB}-probe" \
     --resource-group $RG \
     --lb-name $LB \
@@ -64,7 +61,6 @@ az network lb rule create --name "$LB-HTTP-rule" \
     --frontend-ip-name "${LB_IP}-frontend" \
     --frontend-port 80 \
     --protocol tcp
-# set the load balancer as the LB for the scaleset
 
 az vmss create --name $VMSS \
     --resource-group $RG \
@@ -73,6 +69,7 @@ az vmss create --name $VMSS \
     --vnet-name $VNET \
     --subnet $SN \
     --nsg $NSG \
+    --upgrade-policy-mode automatic \
     --admin-username michael \
     --generate-ssh-keys \
     --lb $LB
