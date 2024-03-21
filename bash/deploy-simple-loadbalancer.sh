@@ -44,7 +44,7 @@ az network lb create --name $LB \
     --resource-group $RG \
     --sku Standard \
     --public-ip-address $LB_IP \
-    --frontend-ip-address "${LB_IP}-frontend" \
+    --frontend-ip-name "${LB_IP}-frontend" \
     --backend-pool-name DefaultBackendPool
 
 # wait 3 minutes because it seems the commands below are running before the lb is successfully running
