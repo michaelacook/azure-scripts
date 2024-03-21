@@ -42,16 +42,16 @@ az vmss create --name $VMSS \
     --subnet $SN \
     --nsg $NSG \
     --admin-username michael \
-    --generate-ssh-keys
-
-
+    --generate-ssh-keys \
+    --lb $LB \
+    --lb-sku Standard
 
 az network lb rule create --name "$LB-HTTP-rule" \
     --resource-group $RG \
     --lb-name api-demo-scalesetLB \
     --backend-pool-name "$LB-BackendPool" \
     --backend-port 5000 \
-    --frontend-ip-name "api-demo-scalesetLBPublicIP" \
+    --frontend-ip-name "${LB}PublicIP" \
     --frontend-port 80 \
     --protocol tcp
 
