@@ -48,12 +48,9 @@ az vmss create --name $VMSS \
 
 az network lb rule create --name "$LB-HTTP-rule" \
     --resource-group $RG \
-    --lb-name api-demo-scalesetLB \
+    --lb-name $LB \
     --backend-pool-name "$LB-BackendPool" \
     --backend-port 5000 \
     --frontend-ip-name "${LB}PublicIP" \
     --frontend-port 80 \
     --protocol tcp
-
-
-# create VM scale set and add to lb backend pool
