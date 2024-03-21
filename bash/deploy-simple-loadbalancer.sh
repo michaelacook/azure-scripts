@@ -47,6 +47,9 @@ az network lb create --name $LB \
     --frontend-ip-address "${LB_IP}-frontend" \
     --backend-pool-name DefaultBackendPool
 
+# wait 3 minutes because it seems the commands below are running before the lb is successfully running
+sleep 180
+
 az network lb probe create --name "${LB}-probe" \
     --resource-group $RG \
     --lb-name $LB \
