@@ -51,6 +51,6 @@ az network lb rule create --name "$LB-HTTP-rule" \
     --lb-name $LB \
     --backend-pool-name "$LB-BackendPool" \
     --backend-port 5000 \
-    --frontend-ip-name "${LB}PublicIP" \
+    --frontend-ip-name "${VMSS}LBPublicIP" \
     --frontend-port 80 \
     --protocol tcp
