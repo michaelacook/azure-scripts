@@ -34,6 +34,35 @@ az network nsg rule create --name AllowPort5000 \
     --access Allow \
     --protocol Tcp
 
+az network public-ip create --name $LB_IP \
+    --resource-group $RG \
+    --location $LOC \
+    --sku Standard
+
+# manually create the load balancer and assign it the above IP
+az network lb create --name $LB \
+    --resource-group $RG \
+    --sku Standard \
+    --public-ip-address $LB_IP \
+    --frontend-ip-address "${LB_IP}-frontend" \
+    --backend-pool-name DefaultBackendPool
+
+az network lb probe create --name "${LB}-probe" \
+    --resource-group $RG \
+    --lb-name $LB \
+    --protocol tcp \
+    --port 5000
+
+az network lb rule create --name "$LB-HTTP-rule" \
+    --resource-group $RG \
+    --lb-name $LB \
+    --backend-pool-name "$LB-BackendPool" \
+    --backend-port 5000 \
+    --frontend-ip-name "${LB_IP}-frontend" \
+    --frontend-port 80 \
+    --protocol tcp
+# set the load balancer as the LB for the scaleset
+
 az vmss create --name $VMSS \
     --resource-group $RG \
     --image Ubuntu2204 \
@@ -43,14 +72,4 @@ az vmss create --name $VMSS \
     --nsg $NSG \
     --admin-username michael \
     --generate-ssh-keys \
-    --lb $LB \
-    --lb-sku Standard
-
-az network lb rule create --name "$LB-HTTP-rule" \
-    --resource-group $RG \
-    --lb-name $LB \
-    --backend-pool-name "$LB-BackendPool" \
-    --backend-port 5000 \
-    --frontend-ip-name "${LB}PublicIP" \
-    --frontend-port 80 \
-    --protocol tcp
+    --lb $LB
