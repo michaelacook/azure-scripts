@@ -59,7 +59,7 @@ az network lb probe create --name "${LB}-probe" \
 az network lb rule create --name "$LB-HTTP-rule" \
     --resource-group $RG \
     --lb-name $LB \
-    --backend-pool-name "$LB-BackendPool" \
+    --backend-pool-name DefaultBackendPool \
     --backend-port 5000 \
     --frontend-ip-name "${LB_IP}-frontend" \
     --frontend-port 80 \
